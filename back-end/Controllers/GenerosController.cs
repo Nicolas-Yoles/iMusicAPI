@@ -1,7 +1,9 @@
 ﻿using back_end.Entidades;
 using back_end.Repositorios;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace back_end.Controllers
 {
@@ -22,10 +24,15 @@ namespace back_end.Controllers
             return repositorio.ObtenerTodosLosGeneros();
         }
 
-        [HttpGet("{Id:int}/{nombre=Roberto")] // api/generos/1
-        public ActionResult<Genero> Get(int Id, string nombre)
+        [HttpGet("{Id:int}")] // api/generos/1
+        public async Task<ActionResult<Genero>> Get(int Id, string nombre)
         {
-            var genero = repositorio.ObtenerPorId(Id);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var genero = await repositorio.ObtenerPorId(Id);
 
             if (genero == null)
             {
@@ -36,19 +43,19 @@ namespace back_end.Controllers
         }
         
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post([FromBody] Genero genero)
         {
             return NoContent();
         }
 
         [HttpPut]
-        public ActionResult Put()
+        public ActionResult Put([FromBody] Genero genero)
         {
             return NoContent();
         }
 
         [HttpDelete]
-        public ActionResult Delete()
+        public ActionResult Delete([FromBody] Genero genero)
         {
             return NoContent();
         }
