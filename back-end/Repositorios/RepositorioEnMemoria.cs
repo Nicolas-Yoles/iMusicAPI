@@ -1,5 +1,6 @@
 ﻿using back_end.Entidades;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace back_end.Repositorios
 {
@@ -16,9 +17,14 @@ namespace back_end.Repositorios
             };
         }
 
-        public List<Genero> ObtenerTodosLoSGeneros()
+        public List<Genero> ObtenerTodosLosGeneros()
         {
             return _generos;
+        }
+
+        public Genero ObtenerPorId(int Id)
+        {
+            return _generos.FirstOrDefault(x => x.Id == Id);
         }
     }
 }
