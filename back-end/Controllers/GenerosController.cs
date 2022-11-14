@@ -17,40 +17,40 @@ namespace back_end.Controllers
 
         [HttpGet] // api/generos
         [HttpGet("listado")] // api/generos/listado
-        public List<Genero> Get()
+        public ActionResult<List<Genero>> Get()
         {
             return repositorio.ObtenerTodosLosGeneros();
         }
 
-        [HttpGet("{Id:int}")] // api/generos/1
-        public Genero Get(int Id, string nombre)
+        [HttpGet("{Id:int}/{nombre=Roberto")] // api/generos/1
+        public ActionResult<Genero> Get(int Id, string nombre)
         {
             var genero = repositorio.ObtenerPorId(Id);
 
             if (genero == null)
             {
-                //return NotFound();
+                return NotFound();
             }
 
             return genero;
         }
         
         [HttpPost]
-        public void Post()
+        public ActionResult Post()
         {
-
+            return NoContent();
         }
 
         [HttpPut]
-        public void Put()
+        public ActionResult Put()
         {
-
+            return NoContent();
         }
 
         [HttpDelete]
-        public void Delete()
+        public ActionResult Delete()
         {
-
+            return NoContent();
         }
     }
 }
