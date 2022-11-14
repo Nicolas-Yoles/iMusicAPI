@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace back_end.Controllers
 {
     [Route("api/generos")]
+    [ApiController]
     public class GenerosController: ControllerBase
     {
         private IRepositorio repositorio;
