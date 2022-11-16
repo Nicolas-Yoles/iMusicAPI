@@ -1,6 +1,7 @@
 ﻿using back_end.Entidades;
 using back_end.Repositorios;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,17 +14,21 @@ namespace back_end.Controllers
     {
         private IRepositorio repositorio;
         private readonly WeatherForecastController weatherForecastController;
+        private readonly ILogger<GenerosController> logger;
 
-        public GenerosController(IRepositorio repositorio, WeatherForecastController weatherForecastController)
+        public GenerosController(IRepositorio repositorio, WeatherForecastController weatherForecastController,
+            ILogger<GenerosController> logger)
         {
             this.repositorio = repositorio;
             this.weatherForecastController = weatherForecastController;
+            this.logger = logger;
         }
 
         [HttpGet] // api/generos
         [HttpGet("listado")] // api/generos/listado
         public ActionResult<List<Genero>> Get()
         {
+            logger.LogInformation("Vamos a mostrar los generos");
             return repositorio.ObtenerTodosLosGeneros();
         }
 
@@ -38,17 +43,21 @@ namespace back_end.Controllers
         }
 
         [HttpGet("{Id:int}")] // api/generos/1
-        public async Task<ActionResult<Genero>> Get(int Id, string nombre)
+        public async Task<ActionResult<Genero>> Get(int Id, [FromHeader] string nombre)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+
+            logger.LogDebug($"Obteniendo un genero por el id {Id}");
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             var genero = await repositorio.ObtenerPorId(Id);
 
             if (genero == null)
             {
+                logger.LogWarning($"No pudimos encontrar el genero de id {Id}");
                 return NotFound();
             }
 
