@@ -1,7 +1,7 @@
 ﻿using back_end.Entidades;
 using back_end.Repositorios;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,10 +12,12 @@ namespace back_end.Controllers
     public class GenerosController: ControllerBase
     {
         private IRepositorio repositorio;
+        private readonly WeatherForecastController weatherForecastController;
 
-        public GenerosController(IRepositorio repositorio)
+        public GenerosController(IRepositorio repositorio, WeatherForecastController weatherForecastController)
         {
             this.repositorio = repositorio;
+            this.weatherForecastController = weatherForecastController;
         }
 
         [HttpGet] // api/generos
@@ -23,6 +25,16 @@ namespace back_end.Controllers
         public ActionResult<List<Genero>> Get()
         {
             return repositorio.ObtenerTodosLosGeneros();
+        }
+
+        [HttpGet("guid")]
+        public ActionResult<Guid> GetGuid()
+        {
+            return Ok(new
+            {
+                GUID_GenerosController = repositorio.ObtenerGuid(),
+                GUID_WeatherForecastController = weatherForecastController.ObtenerGUIDWeatherForecastController()
+            });
         }
 
         [HttpGet("{Id:int}")] // api/generos/1
@@ -46,6 +58,7 @@ namespace back_end.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Genero genero)
         {
+            repositorio.CrearGenero(genero);
             return NoContent();
         }
 
