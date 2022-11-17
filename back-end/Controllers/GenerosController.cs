@@ -1,4 +1,5 @@
 ﻿using back_end.Entidades;
+using back_end.Filtros;
 using back_end.Repositorios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -31,6 +32,7 @@ namespace back_end.Controllers
         [HttpGet("listado")] // api/generos/listado
         [HttpGet("/listadogeneros")] // /listadogeneros
         //[ResponseCache(Duration = 60
+        [ServiceFilter(typeof(MiFiltroDeAccion))]
         public ActionResult<List<Genero>> Get()
         {
             logger.LogInformation("Vamos a mostrar los generos");
@@ -62,6 +64,7 @@ namespace back_end.Controllers
 
             if (genero == null)
             {
+                throw new ApplicationException($"El genero de ID {Id} no fue encontrado");
                 logger.LogWarning($"No pudimos encontrar el genero de id {Id}");
                 return NotFound();
             }
