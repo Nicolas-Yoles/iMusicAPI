@@ -26,3 +26,10 @@ D:\code\iMusic\back-end\back-end\obj\Debug\net5.0\refint\back-end.dll
 D:\code\iMusic\back-end\back-end\obj\Debug\net5.0\back-end.pdb
 D:\code\iMusic\back-end\back-end\obj\Debug\net5.0\back-end.genruntimeconfig.cache
 D:\code\iMusic\back-end\back-end\obj\Debug\net5.0\ref\back-end.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
