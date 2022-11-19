@@ -2,6 +2,7 @@
 using back_end.DTOs;
 using back_end.Entidades;
 using back_end.Filtros;
+using back_end.Utilidades;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace back_end.Controllers
@@ -35,20 +37,24 @@ namespace back_end.Controllers
         }
 
         [HttpGet] // api/generos
-        public async Task<ActionResult<List<GeneroDTO>>> Get()
+        public async Task<ActionResult<List<GeneroDTO>>> Get([FromQuery] PaginacionDTO paginacionDTO)
         {
+            // ... 1
             //return await context.Generos.ToListAsync();
-            
-            var generos = await context.Generos.ToListAsync();
 
             //var resultado = new List<GeneroDTO>();
             //foreach (var genero in generos)
             //{
             //    resultado.Add(new GeneroDTO() { Id = genero.Id, Nombre = genero.Nombre });
             //}
-
             //return resultado;
 
+            // ... 2
+            //var generos = await context.Generos.ToListAsync();
+
+            var queryable = context.Generos.AsQueryable();
+            await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
+            var generos = await queryable.OrderBy(x => x.Nombre).Paginar(paginacionDTO).ToListAsync();
             return mapper.Map<List<GeneroDTO>>(generos);
 
         }
