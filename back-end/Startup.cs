@@ -1,5 +1,6 @@
 using back_end.Controllers;
 using back_end.Filtros;
+using back_end.Utilidades;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace back_end
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IAlmacenadorArchivos, AlmacenadorAzureStorage>();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             services.AddCors(options =>
