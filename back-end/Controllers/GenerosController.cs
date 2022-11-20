@@ -18,13 +18,13 @@ namespace back_end.Controllers
     [Route("api/generos")]
     [ApiController]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class GenerosController: ControllerBase
+    public class GenerosController : ControllerBase
     {
         private readonly ILogger<GenerosController> logger;
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
 
-        public GenerosController( 
+        public GenerosController(
             ILogger<GenerosController> logger,
             ApplicationDbContext context,
             IMapper mapper
@@ -72,7 +72,7 @@ namespace back_end.Controllers
 
             return mapper.Map<GeneroDTO>(genero);
         }
-        
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] GeneroCreacionDTO generoCreacionDTO)
         {
@@ -97,10 +97,19 @@ namespace back_end.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
-        public ActionResult Delete([FromBody] Genero genero)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
         {
-            throw new NotImplementedException();
+            var existe = await context.Generos.AnyAsync(x => x.Id == id);
+            
+            if (!existe)
+            {
+                return NotFound();
+            }
+
+            context.Remove(new Genero() { Id = id });
+            await context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }
