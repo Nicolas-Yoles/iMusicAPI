@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using NetTopologySuite.Geometries;
 
 namespace back_end.Migrations
 {
-    public partial class actores : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,6 +25,20 @@ namespace back_end.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cine",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
+                    Ubicacion = table.Column<Point>(type: "geography", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cine", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Generos",
                 columns: table => new
                 {
@@ -41,6 +56,9 @@ namespace back_end.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Actores");
+
+            migrationBuilder.DropTable(
+                name: "Cine");
 
             migrationBuilder.DropTable(
                 name: "Generos");

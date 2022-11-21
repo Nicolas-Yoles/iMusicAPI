@@ -5,13 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using NetTopologySuite.Geometries;
 using back_end;
 
 namespace back_end.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221120134621_actores")]
-    partial class actores
+    [Migration("20221121150220_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +46,26 @@ namespace back_end.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Actores");
+                });
+
+            modelBuilder.Entity("back_end.Entidades.Cine", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<Point>("Ubicacion")
+                        .HasColumnType("geography");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cine");
                 });
 
             modelBuilder.Entity("back_end.Entidades.Genero", b =>

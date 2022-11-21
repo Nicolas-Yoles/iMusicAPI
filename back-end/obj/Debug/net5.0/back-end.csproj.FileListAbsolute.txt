@@ -66,3 +66,7 @@ D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Azure.Storage.Common.dll
 D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\System.IO.Hashing.dll
 D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\System.Memory.Data.dll
+D:\code\iMusic\back-end\back-end\obj\Debug\net5.0\EFCoreSqlServerNetTopologySuite.cs
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\NetTopologySuite.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\NetTopologySuite.IO.SqlServerBytes.dll
