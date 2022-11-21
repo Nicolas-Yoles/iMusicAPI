@@ -12,6 +12,6 @@ namespace back_end.Entidades
         [StringLength(maximumLength: 50, ErrorMessage = "El nombre no debe ser mayor a 10 caracteres")]
         [PrimeraLetraMayuscula]
         public string Nombre { get; set; }
-
+        public List<PeliculasGeneros> PeliculasGeneros { get; set; }
     }
 }

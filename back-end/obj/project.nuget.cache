@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RU49PNBrhvaTZ6B567S/vIUMWsiVmtkOmw8TlU55TmXH8MxmfPNnInxvFhuLSGSLEajh4u3XYcHvy9VgFqAtwg==",
+  "dgSpecHash": "osB7/uiIPvqTzCp0oMprvX7JKB9Z82XsLRtYUxgi1YbbpugryLMp/+SwrezTkVgVCk8XBVejLd86LtWmMTOKhg==",
   "success": true,
   "projectFilePath": "D:\\code\\iMusic\\back-end\\back-end\\back-end.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,8 @@
     "C:\\Users\\nicoy\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\nicoy\\.nuget\\packages\\nettopologysuite\\2.1.0\\nettopologysuite.2.1.0.nupkg.sha512",
     "C:\\Users\\nicoy\\.nuget\\packages\\nettopologysuite.io.sqlserverbytes\\2.0.0\\nettopologysuite.io.sqlserverbytes.2.0.0.nupkg.sha512",
+    "C:\\Users\\nicoy\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\nicoy\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\nicoy\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\nicoy\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\nicoy\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",

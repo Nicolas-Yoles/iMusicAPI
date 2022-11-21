@@ -70,3 +70,5 @@ D:\code\iMusic\back-end\back-end\obj\Debug\net5.0\EFCoreSqlServerNetTopologySuit
 D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
 D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\NetTopologySuite.dll
 D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\NetTopologySuite.IO.SqlServerBytes.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\code\iMusic\back-end\back-end\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
