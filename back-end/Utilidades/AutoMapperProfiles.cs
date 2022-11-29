@@ -48,9 +48,9 @@ namespace back_end.Utilidades
         {
             var resultado = new List<PeliculasCines>();
 
-            if (peliculaCreacionDTO.GenerosIds == null) { return resultado; }
+            if (peliculaCreacionDTO.CinesIds == null) { return resultado; }
 
-            foreach (var id in peliculaCreacionDTO.GenerosIds)
+            foreach (var id in peliculaCreacionDTO.CinesIds)
             {
                 resultado.Add(new PeliculasCines() { CineId = id });
             }
@@ -62,11 +62,11 @@ namespace back_end.Utilidades
         {
             var resultado = new List<PeliculasActores>();
 
-            if (peliculaCreacionDTO.GenerosIds == null) { return resultado; }
+            if (peliculaCreacionDTO.Actores == null) { return resultado; }
 
-            foreach (var id in peliculaCreacionDTO.GenerosIds)
+            foreach (var actor in peliculaCreacionDTO.Actores)
             {
-                resultado.Add(new PeliculasActores() { ActorId = id });
+                resultado.Add(new PeliculasActores() { ActorId = actor.Id, Personaje = actor.Personaje });
             }
 
             return resultado;
