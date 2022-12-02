@@ -4,6 +4,7 @@ using back_end.Entidades;
 using back_end.Utilidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,6 +44,31 @@ namespace back_end.Controllers
             context.Add(pelicula);
             await context.SaveChangesAsync();
             return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<LandingPageDTO>> Get()
+        {
+            var top = 6;
+            var hoy = DateTime.Today;
+
+            var proximosEstrenos = await context.Peliculas
+                .Where(x => x.FechaLanzamiento > hoy)
+                .OrderBy(x => x.FechaLanzamiento)
+                .Take(top)
+                .ToListAsync();
+
+            var enCines = await context.Peliculas
+                .Where(x => x.EnCines)
+                .OrderBy(x => x.FechaLanzamiento)
+                .Take(top)
+                .ToListAsync();
+
+            var resultado = new LandingPageDTO();
+            resultado.ProximosEstrenos = mapper.Map<List<PeliculaDTO>>(proximosEstrenos);
+            resultado.EnCines = mapper.Map<List<PeliculaDTO>>(enCines);
+
+            return resultado;
         }
 
         [HttpGet("PostGet")]
